@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WebApp">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebApp</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="SendReceiveSocket/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SendReceiveSocket" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: junit:junit:4.11" />
+          <element id="library" level="project" name="Gradle: javax.websocket:javax.websocket-api:1.1" />
+          <element id="library" level="project" name="Gradle: org.hamcrest:hamcrest-core:1.3" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

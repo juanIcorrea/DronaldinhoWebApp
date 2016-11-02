@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<!--
+  Google HTML5 slide template
+  URL: http://code.google.com/p/html5slides/
+-->
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script src='./html5slides/slides.js'></script>
+
+    <!-- Hand demo -->
+    <script type="text/javascript" src="../jshg/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../jshg/compatibility.js"></script>
+    <script type="text/javascript" src="../jshg/jshg.js"></script>
+    <script src="../index.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/pure-min.css">
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  
+  <body>
+    <div class='gesture-div'>
+      <p align="center" style="margin-top:0px;">
+        <a class="button-jshg button-start pure-button" onClick="JSHGToggle($(this))" target="new">START JSHG</a>
+      </p>
+    </div>
+    <div>
+        <div id="gestureShownHere"></div>
+        <div id="learningShownHere" class="learning-div"></div>
+    </div>
+     <script type="text/javascript">
+        var currentGesture = null;
+        var firstTime = true;
+        function JSHGToggle(toggleBut) {
+            toggleBut.removeClass("button-stop");
+            toggleBut.removeClass("button-start");
+            if (JSHG.isRunning()) {
+              JSHG.stop();
+              toggleBut.addClass("button-start");
+              toggleBut.html("START JSHG");
+            } else {
+              if (firstTime) {
+                curSlide = 1;
+                updateSlides();
+                JSHG.learnSkinColor();
+                $("#startInstruction").hide();
+              } else {
+                JSHG.run();
+              }
+              toggleBut.addClass("button-stop");
+              toggleBut.html("STOP JSHG");
+            }
+            firstTime = false;
+        }
+
+        var finishLearning = function() {
+          $("#startInstruction").show();
+        };
+
+        var actionMapper = function(gesture) {
+            if (currentGesture != null && currentGesture.isSameRelativePos(gesture)) return;
+
+            if(gesture.isUp && gesture.isRight){
+                takeOff();
+            } else if(gesture.isUp && gesture.isLeft){
+                up();
+            } else if (gesture.isDown && gesture.isLeft){
+                down();
+            }else if(gesture.isDown &&gesture.isLeft){
+
+            }
+            else if (gesture.isLeft) {
+                rollLeft();
+            } else if (gesture.isRight) {
+                rollRight();
+            }else if (gesture.isUp) {
+                forward();
+            }else if (gesture.isDown) {
+                backward();
+            }
+            currentGesture = gesture;
+        };
+        JSHG.init({
+            "actionCallback": actionMapper, 
+            "learnCallback": finishLearning,
+            "learnDivId": "learningShownHere",
+            "gestureDivId": "gestureShownHere",
+            "settings": {
+              "learningCountDown_": 10, 
+              "cameraWidth": 500,
+              "cameraHeight": 400,
+              "gestureDisplayWidth": 500,
+              "gestureDisplayHeight": 400
+            }
+        });
+    </script>
+
+    <div>
+        <button onclick="run()">Run</button>
+        <button onclick="takeOff()">Take-Off</button>
+    </div>
+  </body>
+</html>
