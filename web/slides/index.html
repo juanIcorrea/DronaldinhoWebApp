@@ -9,7 +9,7 @@
     <title>Presentation</title>
 
     <meta charset='utf-8'>
-    <!--<script src='./html5slides/slides.js'></script>-->
+    <script src='./html5slides/slides.js'></script>
 
       <!-- Styles -->
       <link rel="stylesheet" href="../css/pure-min.css">
@@ -28,7 +28,7 @@
   <body>
 
     <div class="bg-primary"><h1>Dronaldinho</h1></div>
-    <div><div style="text-align: center;"><img src="../images/Drone1.png" ></div></div>
+    <div id="imgDiv" style="display: inline;"><div style="text-align: center;"><img src="../images/Drone1.png" ></div></div>
     <div>
         <div id="gestureShownHere" style="text-align: center; padding-top: 25px;"></div>
         <div id="learningShownHere" class="learning-div" style="text-align: center;"></div>
@@ -36,8 +36,8 @@
     <div>
         <div style="text-align: center;">
             <button class="btn-primary" onclick="run()">Run</button>
-            <!--<a onClick="JSHGToggle($(this))" target="new">START JSHG</a>-->
-            <button class="btn-primary" onClick="JSHGToggle($(this))">START JSHG</button>
+            <a onClick="JSHGToggle($(this))" target="new">START JSHG</a>
+            <!--<button class="btn-primary" onClick="JSHGToggle($(this))">START JSHG</button>-->
             <button class="btn-primary" onclick="takeOff()">Take-Off</button>
         </div>
     </div>
@@ -45,6 +45,7 @@
         var currentGesture = null;
         var firstTime = true;
         function JSHGToggle(toggleBut) {
+            document.getElementById('imgDiv').style.display = 'none';
             toggleBut.removeClass("button-stop");
             toggleBut.removeClass("button-start");
             if (JSHG.isRunning()) {

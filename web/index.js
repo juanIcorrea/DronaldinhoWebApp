@@ -1,7 +1,7 @@
 /**
  * Created by Juan on 10/26/2016.
  */
-var wsUri = "ws://172.22.38.57:8080";
+var wsUri = "ws://192.168.0.105:8080";
 function run() {
     output = document.getElementById("output");
     start();
