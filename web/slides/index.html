@@ -1,9 +1,5 @@
 
 <!DOCTYPE html>
-<!--
-  Google HTML5 slide template
-  URL: http://code.google.com/p/html5slides/
--->
 <html>
   <head>
     <title>Presentation</title>
@@ -13,8 +9,8 @@
 
       <!-- Styles -->
       <link rel="stylesheet" href="../css/pure-min.css">
-      <link rel="stylesheet" href="index.css">
       <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="index.css">
 
     <!-- Hand demo -->
     <script type="text/javascript" src="../jshg/jquery-1.11.0.min.js"></script>
@@ -27,7 +23,7 @@
   
   <body>
 
-    <div class="bg-primary"><h1>Dronaldinho</h1></div>
+    <div class="bg-primary"><h1 id="header">Dronaldinho</h1></div>
     <div id="imgDiv" style="display: inline;"><div style="text-align: center;"><img src="../images/Drone1.png" ></div></div>
     <div>
         <div id="gestureShownHere" style="text-align: center; padding-top: 25px;"></div>
@@ -35,13 +31,30 @@
     </div>
     <div>
         <div style="text-align: center;">
-            <button class="btn-primary" onclick="run()">Run</button>
-            <a onClick="JSHGToggle($(this))" target="new">START JSHG</a>
-            <!--<button class="btn-primary" onClick="JSHGToggle($(this))">START JSHG</button>-->
-            <button class="btn-primary" onclick="takeOff()">Take-Off</button>
+            <button class="btn-primary" onclick="run()">Conectar</button>
+            <!--<a onClick="JSHGToggle($(this))" target="new">START JSHG</a>-->
+            <button class="btn-primary" onClick="JSHGToggle($(this))">Iniciar Camara</button>
+            <button class="btn-primary" onclick="takeOff()">Aterrizaje Emergencia</button>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <label for="wsUri">Ingresar IP del telefono:  </label><input id="wsUri" />
+            <button class="btn-primary" onclick="changeIP()">Cambiar IP</button>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <label>IP Ejemplo: ws://172.22.36.197:8080</label>
         </div>
     </div>
      <script type="text/javascript">
+
+        function changeIP() {
+            var input = document.getElementById('wsUri').value;
+            if(input.substring(0,4) != "ws://") {
+                alert("La IP tiene que ser por ejemplo => ws://172.22.36.197:8080");
+            } else {
+                changeUri(input);
+            }
+        }
+
         var currentGesture = null;
         var firstTime = true;
         function JSHGToggle(toggleBut) {

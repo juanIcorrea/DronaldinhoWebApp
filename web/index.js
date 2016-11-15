@@ -1,11 +1,13 @@
-/**
- * Created by Juan on 10/26/2016.
- */
 var wsUri = "ws://172.22.36.197:8080";
 function run() {
     output = document.getElementById("output");
     start();
 }
+
+function changeUri(uri) {
+    wsUri = uri
+}
+
 function takeOff() {
     doSend("takeoff");
 
@@ -41,7 +43,6 @@ function up(){
     doSend("up")
 }
 function start() {
-    alert("Started");
     websocket = new WebSocket(wsUri);
     websocket.onopen = function(evt) {
         onOpen(evt)
