@@ -1,3 +1,5 @@
+/*! \mainpage Javascript usado en Index.html
+* */
 //! Js usado en el index.html
 /*!
 *   Este archivo tiene la función de encargarse de la comunicación via websocket con la aplicación de celular
