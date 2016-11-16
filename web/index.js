@@ -1,6 +1,5 @@
-/*! \mainpage Javascript usado en Index.html
+/*! \mainpage Documentación DronaldinhoWebApp
 * */
-//! Js usado en el index.html
 /*!
 *   Este archivo tiene la función de encargarse de la comunicación via websocket con la aplicación de celular
 *
@@ -12,8 +11,8 @@ var wsUri = "ws://172.22.36.197:8080";
 *   Tiene la función de ejecutarse primero y comenzar la cadena de comunicación con el dispositivo
 * */
 function run() {
-    output = document.getElementById("output");/*!< Instancia del elemento con id output en el index.html*/
-    start();/*!< Llamado a método start()*/
+    output = document.getElementById("output");
+    start();
 }
 //! Método ChangeUri
 /*!
