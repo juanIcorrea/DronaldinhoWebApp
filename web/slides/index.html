@@ -37,22 +37,18 @@
             <button class="btn-primary" onclick="takeOff()">Aterrizaje Emergencia</button>
         </div>
         <div style="text-align: center; margin-top: 15px">
-            <label for="wsUri">Ingresar IP del telefono:  </label><input id="wsUri" />
+            <label for="wsUri">Ingresar IP del telefono:  </label>
+            <input type="text" id="wsUri">
             <button class="btn-primary" onclick="changeIP()">Cambiar IP</button>
         </div>
         <div style="text-align: center; margin-top: 15px">
-            <label>IP Ejemplo: ws://172.22.36.197:8080</label>
+            <label>IP Ejemplo: 172.22.36.197:8080</label>
         </div>
     </div>
      <script type="text/javascript">
 
         function changeIP() {
-            var input = document.getElementById('wsUri').value;
-            if(input.substring(0,4) != "ws://") {
-                alert("La IP tiene que ser por ejemplo => ws://172.22.36.197:8080");
-            } else {
-                changeUri(input);
-            }
+            changeUri(document.getElementById('wsUri').value);
         }
 
         var currentGesture = null;
@@ -64,7 +60,7 @@
             if (JSHG.isRunning()) {
               JSHG.stop();
               toggleBut.addClass("button-start");
-              toggleBut.html("START JSHG");
+              toggleBut.html("Iniciar Camara");
             } else {
               if (firstTime) {
                 curSlide = 1;
@@ -75,7 +71,7 @@
                 JSHG.run();
               }
               toggleBut.addClass("button-stop");
-              toggleBut.html("STOP JSHG");
+              toggleBut.html("Detener Camara");
             }
             firstTime = false;
         }
@@ -101,7 +97,10 @@
                 forward();
             }else if (gesture.isDown) {
                 backward();
+            } else if(!gesture.isUp && !gesture.isDown && !gesture.isLeft && !gesture.isRight) {
+                stopMovement();
             }
+
             currentGesture = gesture;
         };
         JSHG.init({

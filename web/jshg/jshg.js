@@ -25,7 +25,7 @@ JSHG.WORKER_INIT_REQUEST = "initRequest";
 JSHG.WORKER_LEARN_REQUEST = "learningRequest";
 JSHG.WORKER_DETECT_REQUEST = "detectRequest";
 JSHG.ACTIONS_BUFFER_SIZE = 3;
-JSHG.LEARNING_MESSAGE = "Please place your hand over the dots. The learning process is running in ";
+JSHG.LEARNING_MESSAGE = "Deje su mano entre los puntos, el analizador terminara en ";
 JSHG.EPSILON = 0.0001;
 
 /* ------- DATA STRUCTURE ------ */
@@ -299,7 +299,7 @@ JSHG.startLearning_ = function() {
             JSHG.countDownId_ = setTimeout(countDown, 1000);
         } else {
             JSHG.countDownId_ = 0;
-            JSHG.learningMessage_.html("Please wait ...");
+            JSHG.learningMessage_.html("Por Favor espere ...");
         }
     }
     JSHG.countDownId_ = setTimeout(countDown, 1000);

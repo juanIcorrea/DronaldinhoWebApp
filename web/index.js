@@ -4,7 +4,7 @@
 *   Este archivo tiene la función de encargarse de la comunicación via websocket con la aplicación de celular
 *
 * */
-var wsUri = "ws://172.22.36.197:8080";
+var wsUri = "ws://192.168.0.105:8080";
 
 //! Método run
 /*!
@@ -14,6 +14,7 @@ function run() {
     output = document.getElementById("output");
     start();
 }
+
 //! Método ChangeUri
 /*!
 *   Permite modificar la uri/ip a la cual se conecta la webApp
@@ -22,18 +23,29 @@ function run() {
 function changeUri(uri) {
     wsUri = uri
 }
+
 //! Método takeOff
 /*!
-* Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "takeoff"
+* Envía un mensaje al dispositivo por medio del método toSend con valor "takeoff"
 * */
 function takeOff() {
     doSend("takeoff");
 
 }
 
+//! Método stopMove
+/*!
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "middle"
+ * */
+function stopMovement() {
+    doSend("middle");
+
+}
+
+
 //! Método down
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "down"
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "down"
  * */
 function down(){
     doSend("down")
@@ -41,7 +53,7 @@ function down(){
 
 //! Método left
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "left"
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "left"
  * */
 function left(){
     doSend("left")
@@ -50,7 +62,7 @@ function left(){
 
 //! Método right
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "right"
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "right"
  * */
 function right(){
     doSend("right")
@@ -59,7 +71,7 @@ function right(){
 
 //! Método forward
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "forward"
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "forward"
  * */
 function forward(){
     doSend("forward")
@@ -68,7 +80,7 @@ function forward(){
 
 //! Método backward
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "backward"
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "backward"
  * */
 function backward(){
     doSend("backward")
@@ -77,7 +89,7 @@ function backward(){
 
 //! Método rollLeft
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "rollLeft"
+ * Envía un mensaje al dispositivo por medio del método toSend con valor "rollLeft"
  *
  * */
 function rollLeft(){
@@ -87,7 +99,7 @@ function rollLeft(){
 
 //! Método TakeOff
 /*!
- * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "takeoff"
+ * Envía un mensaje al dispositivo por medio del método toSend al dispositivo con valor "rollright"
  * */
 function rollRight(){
     doSend("rollRight")
